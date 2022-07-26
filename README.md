@@ -17,3 +17,7 @@ RickandMortyChatBot.ipynb - actual project
 content.json - JSON file containing the possible user inputs, responses from Rick, and the tag associated with the responses
 rick_responses.csv - QUERIED data set
 rick_responses_query - the SQL query used to create the rick_responses.csv (this honestly could have been better. if you have feedback, please let me know)
+
+
+IF YOU HAVE ANY FEEDBACK REGARDING ANY OF THE CODE, PLEASE FEEL FREE TO MESSAGE ME ON LINKEDIN
+(Link is in my bio)
