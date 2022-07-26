@@ -1,0 +1,51 @@
+CREATE TABLE `queries-for-joins-341521.RickAndMortyScripts.rick_responses` AS
+SELECT *
+FROM (
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), 
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "greeting") as tag,   
+  STRING_AGG(CONCAT('"', line), '",') responses
+FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+WHERE (line LIKE'Hey%'OR line LIKE 'Hello%' OR line LIKE 'Hi%' OR line LIKE 'May I%')
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), 
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "farewell") as tag,   
+  STRING_AGG(CONCAT('"', line), '",') responses
+FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+WHERE line LIKE'%goodbye%' 
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), 
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "whoareyou") as tag,   
+  STRING_AGG(CONCAT('"', line), '",') responses
+FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+WHERE line LIKE'%Rick Sanchez%' 
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), 
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "howami") as tag,   
+  STRING_AGG(CONCAT('"', line), '",') responses
+FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+WHERE line LIKE'%I am%'
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), 
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "whereareyou") as tag,   
+  STRING_AGG(CONCAT('"', line), '",') responses
+FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+WHERE (line LIKE'%on my%' OR line LIKE '%work bench%' OR line LIKE '% type in %' OR line LIKE '% where there are %')
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name),
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "whatadventure") as tag,
+  STRING_AGG(CONCAT('"', line), '",') responses
+  FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+  WHERE (line LIKE '%come on%' OR line LIKE '%adventure%')
+-- Connect the 'Rick' quotes query to query
+UNION ALL
+SELECT REPLACE((SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name),
+  (SELECT name FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset` WHERE name = "Rick" GROUP BY name), "areudrunk") as tag,
+  STRING_AGG(CONCAT('"', line), '",') responses
+  FROM `queries-for-joins-341521.RickAndMortyScripts.rick_and_morty_dataset`
+  WHERE line LIKE '_-_-%'
+) 
